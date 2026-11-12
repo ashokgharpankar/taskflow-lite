@@ -2,9 +2,10 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
-import './App.css'
 
 function App() {
+
+  console.log('render')
   const [count, setCount] = useState(0)
 
   return (
@@ -16,7 +17,7 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
+          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-300">TaskFlow Lite</h1>
           <p>
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
