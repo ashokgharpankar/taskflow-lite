@@ -30,10 +30,10 @@ React + Vite ──► Vitest (unit) ──► Playwright (E2E vs production bui
 
 - [x] Project setup: Vite, StrictMode, Vitest, Tailwind
 - [x] Typed domain model with union types and `Record`
-- [ ] `useState`, controlled inputs, `useId`
-- [ ] `useReducer` + split Context, React 19 `use()`
-- [ ] Custom hooks: `useDebounce`, `useFetch` (AbortController), `useLocalStorage` (`useSyncExternalStore`)
-- [ ] Performance: `memo`, `useMemo`, `useCallback`, `useDeferredValue`, `useTransition`
+- [x] `useState`, controlled inputs, `useId`
+- [x] `useReducer` + split Context, React 19 `use()`
+- [x] Custom hooks: `useDebounce`, `useFetch` (AbortController), `useLocalStorage` (`useSyncExternalStore`)
+- [x] Performance: `memo`, `useMemo`, `useCallback`, `useDeferredValue`, `useTransition`
 - [ ] Refs and DOM: latest-ref pattern, `useImperativeHandle`, `createPortal`
 - [ ] Resilience: error boundaries, `lazy` + `Suspense`
 - [ ] Unit and E2E tests
