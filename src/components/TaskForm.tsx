@@ -1,8 +1,12 @@
-import { useId, useRef, useState, type FormEvent } from 'react'
+import { useId, useImperativeHandle, useRef, useState, type FormEvent, type Ref } from 'react'
 import type { Priority } from '../types'
 import { useTasksDispatch } from '../state/useTasks'
 
-export function TaskForm() {
+export interface TaskFormHandle {
+  focus: () => void
+}
+
+export function TaskForm({ ref }: { ref?: Ref<TaskFormHandle> }) {
   const dispatch = useTasksDispatch()
   const [title, setTitle] = useState('')
   const [priority, setPriority] = useState<Priority>('medium')
@@ -11,6 +15,8 @@ export function TaskForm() {
   const priorityId = useId()
   const MAX = 120
   const remaining = MAX - title.length
+
+  useImperativeHandle(ref, () => ({ focus: () => inputRef.current?.focus() }), [])
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
