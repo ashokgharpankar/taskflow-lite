@@ -1,7 +1,9 @@
 import { useId, useRef, useState, type FormEvent } from 'react'
 import type { Priority } from '../types'
+import { useTasksDispatch } from '../state/useTasks'
 
 export function TaskForm() {
+  const dispatch = useTasksDispatch()
   const [title, setTitle] = useState('')
   const [priority, setPriority] = useState<Priority>('medium')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -13,9 +15,8 @@ export function TaskForm() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     if (!title.trim()) return
-    console.log('add task', { title: title.trim(), priority })
+    dispatch({ type: 'added', title, priority })
     setTitle('')
-    console.log('title right after setTitle:', title) // 🔍 the snapshot experiment
     inputRef.current?.focus()
   }
 
