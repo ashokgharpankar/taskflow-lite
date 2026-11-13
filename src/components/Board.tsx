@@ -2,6 +2,8 @@ import { useCallback, useDeferredValue, useMemo, useState, useTransition } from 
 import { useTasks } from '../state/useTasks'
 import { STATUSES, STATUS_LABEL, type Priority, type Status, type Task } from '../types'
 import { TaskCard } from './TaskCard'
+import { EditTaskModal } from './EditTaskModal'
+
 
 type PriorityFilter = Priority | 'all'
 
@@ -27,7 +29,7 @@ export function Board() {
 
   // Stable identity → memo(TaskCard) can skip re-renders.
   const handleOpen = useCallback((id: string) => setOpenId(id), [])
-
+  const handleClose = useCallback(() => setOpenId(null), [])
   const isStale = query !== deferredQuery
   const openTask = openId ? tasks.find((t) => t.id === openId) : undefined
 
@@ -57,7 +59,7 @@ export function Board() {
         {isPending && <span className="text-sm text-slate-500">Updating…</span>}
       </div>
 
-      {openTask && <p className="mb-3 text-sm text-slate-500">Selected: {openTask.title}</p>}
+      {openTask && <p className="mb-3 text-sm text-slate-500">{openTask && <EditTaskModal key={openTask.id} task={openTask} onClose={handleClose} />}</p>}
 
       <div className={`grid gap-4 md:grid-cols-3 transition-opacity ${isStale ? 'opacity-60' : ''}`}>
         {STATUSES.map((status) => (
