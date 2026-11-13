@@ -15,14 +15,18 @@ export default function StatsPanel() {
   }, [tasks])
 
   return (
-    <aside className="stats" aria-label="Stats">
-      <div><strong>{stats.total}</strong> total</div>
-      <div><strong>{stats.done}</strong> done</div>
-      <div><strong data-testid="completion">{stats.pct}%</strong> complete</div>
-      <div><strong>{stats.high}</strong> open high-priority</div>
-      <button onClick={() => dispatch({ type: 'clearedDone' })} disabled={stats.done === 0}>
-        Clear done
-      </button>
-    </aside>
-  )
+  <aside aria-label="Stats" className="mt-4 flex flex-wrap items-center gap-6 rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+    <div><strong className="text-xl">{stats.total}</strong> <span className="text-sm text-slate-500">total</span></div>
+    <div><strong className="text-xl">{stats.done}</strong> <span className="text-sm text-slate-500">done</span></div>
+    <div><strong data-testid="completion" className="text-xl">{stats.pct}%</strong> <span className="text-sm text-slate-500">complete</span></div>
+    <div><strong className="text-xl">{stats.high}</strong> <span className="text-sm text-slate-500">open high-priority</span></div>
+    <button
+      onClick={() => dispatch({ type: 'clearedDone' })}
+      disabled={stats.done === 0}
+      className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-100 disabled:opacity-40 dark:border-slate-600 dark:hover:bg-slate-700"
+    >
+      Clear done
+    </button>
+  </aside>
+)
 }

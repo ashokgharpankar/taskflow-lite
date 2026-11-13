@@ -17,7 +17,12 @@ export function TasksProvider({ children, initialTasks }: { children: ReactNode;
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks, (init) => init ?? loadTasks())
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
+    } catch (err) {
+      // Storage full or blocked: keep working in memory instead of crashing the board.
+      console.warn('Could not save tasks; changes will be lost on reload', err)
+    }
   }, [tasks])
 
   return (

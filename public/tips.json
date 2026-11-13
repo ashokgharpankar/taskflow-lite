@@ -1,0 +1,9 @@
+[
+  { "hook": "useEffect", "tip": "Every subscription you open needs a cleanup that closes it." },
+  { "hook": "useMemo", "tip": "Measure first. Memoise expensive work, not cheap arithmetic." },
+  { "hook": "useCallback", "tip": "Only useful when the function is passed to a memoised child or a dependency array." },
+  { "hook": "useReducer", "tip": "When the next state depends on several pieces of the previous state, reach for a reducer." },
+  { "hook": "useRef", "tip": "Refs hold values that should survive renders without causing them." },
+  { "hook": "useDeferredValue", "tip": "Keep the input urgent; let the expensive list lag behind." },
+  { "hook": "useSyncExternalStore", "tip": "The safe way to read state that lives outside React." }
+]
